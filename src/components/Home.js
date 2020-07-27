@@ -8,7 +8,7 @@ const Home = () => {
     const [itemsForSale, setItemsForSale] = useState([])
 
     useEffect(() => {
-        axios.get()
+        axios.get('https://jsonplaceholder.typicode.com/users')
         .then(res => {
             console.log(res)
         })
