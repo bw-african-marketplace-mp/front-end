@@ -13,12 +13,15 @@ function App() {
       <h1>African Marketplace</h1>
       <Navigation />
       <Switch>
-        <Route path='/login'>
-          <Login /> 
+        
+        {/* <Route path='/login'>
+          <Login />
         </Route>
+
         <Route path='/register'>
           <Register />
-        </Route>
+        </Route> */}
+
         <Route path='/'>
           <Home />
         </Route>
