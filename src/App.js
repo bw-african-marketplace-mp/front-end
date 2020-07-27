@@ -1,10 +1,11 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Route, Switch, useHistory } from 'react-router-dom'
 import Home from './components/Home'
 import Navigation from './components/Navigation'
 import Login from './components/Login'
 import Register from './components/Register'
 import './App.css';
+
 
 function App() {
   return (
