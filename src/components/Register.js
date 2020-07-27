@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import * as yup from 'yup'
-import formSchema from "../schema"
+import formSchema from "../RegisterSchema"
 import axios from 'axios'
 
 const initialForm = {
