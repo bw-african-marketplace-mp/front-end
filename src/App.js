@@ -12,11 +12,11 @@ function App() {
       <h1>African Marketplace</h1>
       <Navigation />
       <Switch>
-        <Route path='/'>
+        {/* <Route path='/'>
           <Home />
-        </Route>
+        </Route> */}
         <Route path='/login'>
-          <Login />
+          <Login /> 
         </Route>
         <Route path='/register'>
           <Register />
