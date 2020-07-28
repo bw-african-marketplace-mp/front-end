@@ -1,38 +1,40 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import * as yup from 'yup'
-import formSchema from "../LoginSchema"
+import loginSchema from "../LoginSchema"
 import axios from 'axios'
 
 const LogForm = {
-    username: '',
-    password: ''
+    logusername: '',
+    logpassword: ''
 }
 
 function Login (props) {
-    const [form, setForm] = useState()
+    const [form, setForm] = useState(LogForm)
     const [errors, setErrors] = useState([]); 
     const history = useHistory()
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value});
+        loginSchema.validate(form, {abortEarly: false})
+        .then(res => {
+            console.log(res);
+            setErrors([]);
+        })
+        .catch(err => {
+            console.log(err);
+            setErrors([...err.inner]);
+        })
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        formSchema.validate(form, {abortEarly: false})
+        axios.post('http://jsonplaceholder.typicode.com/users', form)
         .then(res => {
-            axios.post('https://reqres.in/api/login', form)
-            .then(res => {
-                console.log(res);
-                setForm(LogForm)
-                history.push('/')
-            })
-            .catch(err => {
-                console.dir(err)
-            })
+            console.log(res);
+            setForm(LogForm)
+            history.push('/')
         })
         .catch(err => {
-            console.dir(err);
-            setErrors([...err.inner])
+            console.dir(err)
         })
     }
     return(
