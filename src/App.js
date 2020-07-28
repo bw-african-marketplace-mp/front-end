@@ -23,7 +23,10 @@ function App() {
           <Register />
         </Route>
 
-        <Route path='/add-item' render={<AddItem/>} />
+        <Route path='/add-item' >
+          <AddItem />
+        </Route>
+        
         <Route path='/'>
           <Home />
         </Route>
