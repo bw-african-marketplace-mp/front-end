@@ -48,7 +48,7 @@ function Login (props) {
             <label> Password
                 <input id='logpass' name='logpassword' type='password' onChange={handleChange}/>
             </label>
-            <button>Log in</button>
+            <button id='logbtn'>Log in</button>
         </form>
     )
 }
