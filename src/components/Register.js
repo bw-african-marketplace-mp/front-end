@@ -50,7 +50,7 @@ function Register (props) {
             <label> Password
                 <input id='pass' name='password' type='password' onChange={handleChange}/>
             </label>
-            <button>Register</button>
+            <button id='regbtn'>Register</button>
         </form>
     )
 }
