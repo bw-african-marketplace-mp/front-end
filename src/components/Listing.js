@@ -1,8 +1,9 @@
 import React from 'react'
 
 const Listing = props => {
+    console.log(props)
     return(
-        <div></div>
+        <div>Placeholder text {props.item.id}</div>
     )
 }
 
