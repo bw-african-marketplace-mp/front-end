@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Navigation from './components/Navigation'
 import Login from './components/Login'
 import Register from './components/Register'
+import AddItem from './components/AddItem'
 import './App.css';
 
 
@@ -22,6 +23,7 @@ function App() {
           <Register />
         </Route>
 
+        <Route path='/add-item' render={<AddItem/>} />
         <Route path='/'>
           <Home />
         </Route>
