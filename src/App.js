@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom'
+import React from 'react';
+import { Route, Switch } from 'react-router-dom'
 import Home from './components/Home'
 import Navigation from './components/Navigation'
 import Login from './components/Login'
@@ -13,14 +13,14 @@ function App() {
       <h1>African Marketplace</h1>
       <Navigation />
       <Switch>
-        {/* <Route path='/'>
-          <Home />
-        </Route> */}
         <Route path='/login'>
           <Login /> 
         </Route>
         <Route path='/register'>
           <Register />
+        </Route>
+        <Route path='/'>
+          <Home />
         </Route>
       </Switch>
     </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import {BASE_URL} from '../utils/URLs'
 
 import Listing from './Listing'
 
@@ -8,12 +9,13 @@ const Home = () => {
     const [itemsForSale, setItemsForSale] = useState([])
 
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/users')
+        axios.get(`${BASE_URL}/users`)
         .then(res => {
             console.log(res)
+            setItemsForSale(res.data)
         })
         .catch(err => console.log(err))
-    })
+    }, [])
 
 
 
