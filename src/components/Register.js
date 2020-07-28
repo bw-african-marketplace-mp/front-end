@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import * as yup from 'yup'
-import formSchema from "../RegisterSchema"
+import registerSchema from "../RegisterSchema"
 import axios from 'axios'
 
 const initialForm = {
@@ -11,7 +11,7 @@ const initialForm = {
   }
 
 function Register (props) {
-    const [form, setForm] = useState()
+    const [form, setForm] = useState(initialForm)
     const [errors, setErrors] = useState([]); 
     const history = useHistory()
     const handleChange = (e) => {
@@ -19,9 +19,9 @@ function Register (props) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        formSchema.validate(form, {abortEarly: false})
+        registerSchema.validate(form, {abortEarly: false})
         .then(res => {
-            axios.post('https://reqres.in/api/register', form)
+            axios.post('http://jsonplaceholder.typicode.com/users', form)
             .then(res => {
                 console.log(res);
                 setForm(initialForm)
