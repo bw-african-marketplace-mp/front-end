@@ -61,6 +61,12 @@
   margin: 5% 0;
 }
 
+.item-card {
+  margin: 5% 15%;
+  border: #d32626 solid;
+  font-weight: bold;
+}
+
 .btn{
   background: #f5a31a;
   color: white;
