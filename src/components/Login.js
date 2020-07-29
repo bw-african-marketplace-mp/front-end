@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import * as yup from 'yup'
 import loginSchema from "../LoginSchema"
 import axios from 'axios'
+import {UserContext} from '../App'
 import {BASE_URL, LOGIN_PATH} from '../utils/URLs'
 import '../App.css';
 
@@ -11,10 +12,13 @@ const LogForm = {
     password: ''
 }
 
+
+
 function Login (props) {
     const [form, setForm] = useState(LogForm)
     const [errors, setErrors] = useState([]); 
     const history = useHistory()
+    const {user, setUser} = useContext(UserContext)
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value});
     }
@@ -26,6 +30,10 @@ function Login (props) {
             .then(res => {
                 console.log(res);
                 localStorage.setItem('token', res.data.token)
+                setUser({
+                    ...user,
+                    username: form.username
+                })
                 setForm(LogForm)
                 history.push('/')
             })
