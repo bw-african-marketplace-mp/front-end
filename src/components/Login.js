@@ -16,8 +16,20 @@ function Login (props) {
     const history = useHistory()
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value});
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
         loginSchema.validate(form, {abortEarly: false})
         .then(res => {
+            axios.post('http://jsonplaceholder.typicode.com/users', form)
+            .then(res => {
+                console.log(res);
+                setForm(LogForm)
+                history.push('/')
+            })
+            .catch(err => {
+                console.dir(err)
+            })
             console.log(res);
             setErrors([]);
         })
@@ -25,18 +37,7 @@ function Login (props) {
             console.log(err);
             setErrors([...err.inner]);
         })
-    }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        axios.post('http://jsonplaceholder.typicode.com/users', form)
-        .then(res => {
-            console.log(res);
-            setForm(LogForm)
-            history.push('/')
-        })
-        .catch(err => {
-            console.dir(err)
-        })
+       
     }
     return(
         <div className='log-container'> 
