@@ -4,6 +4,7 @@ import * as yup from 'yup'
 import registerSchema from "../RegisterSchema"
 import axios from 'axios'
 import {BASE_URL, REGISTER_PATH} from '../utils/URLs'
+import '../App.css';
 
 const initialForm = {
     username: '',
@@ -37,21 +38,23 @@ function Register (props) {
         })
     }
     return(
-        <form onSubmit={handleSubmit}>
-            {errors.map(error =>{
-                return <p>{error.message}</p>
-            })} 
-            <label> Username
-                <input id='name' name='username' type='textbox' onChange={handleChange}/>
-            </label>
-            <label> Email
-                <input id='mail' name='email' type='textbox' onChange={handleChange}/>
-            </label>
-            <label> Password
-                <input id='pass' name='password' type='password' onChange={handleChange}/>
-            </label>
-            <button>Register</button>
-        </form>
+        <div className='reg-container'>
+            <form onSubmit={handleSubmit}>
+                {errors.map(error =>{
+                    return <p>{error.message}</p>
+                })} 
+                <label> Username: 
+                    <input id='name' name='username' type='textbox' onChange={handleChange}/>
+                </label>
+                <label> Email: 
+                    <input id='mail' name='email' type='textbox' onChange={handleChange}/>
+                </label>
+                <label> Password: 
+                    <input id='pass' name='password' type='password' onChange={handleChange}/>
+                </label>
+                <button className='btn' id='regbtn'>Register</button>
+            </form>
+        </div>
     )
 }
 export default Register
