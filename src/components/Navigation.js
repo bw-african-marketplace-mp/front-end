@@ -8,7 +8,6 @@ function Navigation () {
             <NavLink to='/' className='link'>Home</NavLink>
             <NavLink to='/register' className='link'>Register</NavLink>
             <NavLink to='/login' className='link'>Log in</NavLink>
-            
         </div>
     )
 

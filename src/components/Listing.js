@@ -33,12 +33,11 @@ const Listing = props => {
             <div className='description'>
             Country: {props.item.country}
             </div> 
-             <div className='description'>
+           <div className='description'>
             Market Name: {props.item.market_name}
-            </div>
-            <button>Edit Listing</button>
-             <button onClick={deleteItem}>Delete Listing</button>
-
+            </div> 
+            <button className='third-btn'>Edit Listing</button>
+            <button className='third-btn' onClick={deleteItem}>Delete Listing</button> 
         </div>
     )
 }
