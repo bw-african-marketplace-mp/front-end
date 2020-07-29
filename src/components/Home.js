@@ -44,15 +44,16 @@ const Home = () => {
     }
 
     return (
-        <div>
-            <button onClick={addItem}>Add Item</button>
+        
             <div>
-                <h2>Items for Sale</h2>
+                <h2 className='home-title'>Items for Sale</h2>
                 {itemsForSale.map(item => {
                     return(
                         <Listing key={item.id} item={item} />
                     )
                 })}
+                <div>
+                    <button className='btn' onClick={addItem}>Add Item</button>
             </div>
         </div>
     )

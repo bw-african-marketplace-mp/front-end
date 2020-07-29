@@ -39,9 +39,9 @@ function Login (props) {
             })
             .catch(err => {
                 console.dir(err)
+                setErrors([...errors, {message:'Invalid Login'}]);
             })
             console.log(res);
-            setErrors([]);
         })
         .catch(err => {
             console.log(err);

@@ -35,66 +35,68 @@ const AddItem = props => {
 
     return(
         <>
-            <h2>Create a New Listing</h2>
-            <form onSubmit={onSubmit}>
-                <label>Product Name:
-                    <input 
-                        type='text'
-                        name='product_name'
-                        value={formValues.product_name}
-                        onChange={onChange}                
-                    />
-                </label>
-                <label>Price:$
-                    <input 
-                        type='text'
-                        name='product_price'
-                        value={formValues.product_price}
-                        onChange={onChange}                
-                    />
-                </label>
-                <label>Quantity:
-                    <input 
-                        type='text'
-                        name='product_quantity'
-                        value={formValues.product_quantity}
-                        onChange={onChange}                
-                    />
-                </label>
-                <label>Product Category:
-                    <input 
-                        type='text'
-                        name='product_category'
-                        value={formValues.product_category}
-                        onChange={onChange}
-                    />
-                </label>
-                <label>Product Description:
-                    <input 
-                        type='text'
-                        name='product_description'
-                        value={formValues.product_description}
-                        onChange={onChange}
-                    />
-                </label>
-                <label>Country:
-                    <input 
-                        type='text'
-                        name='country'
-                        value={formValues.country}
-                        onChange={onChange}
-                    />
-                </label>
-                <label>Market Name:
-                    <input 
-                        type='text'
-                        name='market_name'
-                        value={formValues.market_name}
-                        onChange={onChange}
-                    />
-                </label>
-                <button>Create Sale Listing</button>
-            </form>
+            <h2 className='change-title'>Create a New Listing</h2>
+            <div className='list'>
+                <form onSubmit={onSubmit}>
+                    <label className='item'>Product Name:
+                        <input 
+                            type='text'
+                            name='product_name'
+                            value={formValues.product_name}
+                            onChange={onChange}                
+                        />
+                    </label>
+                    <label className='item'>Price:$
+                        <input 
+                            type='text'
+                            name='product_price'
+                            value={formValues.product_price}
+                            onChange={onChange}                
+                        />
+                    </label>
+                    <label className='item'>Quantity:
+                        <input 
+                            type='text'
+                            name='product_quantity'
+                            value={formValues.product_quantity}
+                            onChange={onChange}                
+                        />
+                    </label>
+                    <label className='item'>Product Category:
+                        <input 
+                            type='text'
+                            name='product_category'
+                            value={formValues.product_category}
+                            onChange={onChange}
+                        />
+                    </label>
+                    <label className='item'>Product Description:
+                        <input 
+                            type='text'
+                            name='product_description'
+                            value={formValues.product_description}
+                            onChange={onChange}
+                        />
+                    </label>
+                    <label className='item'>Country:
+                        <input 
+                            type='text'
+                            name='country'
+                            value={formValues.country}
+                            onChange={onChange}
+                        />
+                    </label>
+                    <label className='item'>Market Name:
+                        <input 
+                            type='text'
+                            name='market_name'
+                            value={formValues.market_name}
+                            onChange={onChange}
+                        />
+                    </label>
+                    <button className='sale-btn'>Create Sale Listing</button>
+                </form>
+            </div>
         </>
     )
 }
