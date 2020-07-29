@@ -36,8 +36,8 @@ const Listing = props => {
            <div className='description'>
             Market Name: {props.item.market_name}
             </div> 
-            <button>Edit Listing</button>
-            <button onClick={deleteItem}>Delete Listing</button> 
+            <button className='third-btn'>Edit Listing</button>
+            <button className='third-btn' onClick={deleteItem}>Delete Listing</button> 
         </div>
     )
 }
