@@ -22,9 +22,10 @@ function Login (props) {
         e.preventDefault();
         loginSchema.validate(form, {abortEarly: false})
         .then(res => {
-            axios.post('http://jsonplaceholder.typicode.com/users', form)
+            axios.post(`${BASE_URL}${LOGIN_PATH}`, form)
             .then(res => {
                 console.log(res);
+                localStorage.setItem('token', res.data.token)
                 setForm(LogForm)
                 history.push('/')
             })
@@ -39,19 +40,7 @@ function Login (props) {
             setErrors([...err.inner]);
         })
     }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        axios.post(`${BASE_URL}${LOGIN_PATH}`, form)
-        .then(res => {
-            console.log(res);
-            localStorage.setItem('token', res.data.token)
-            setForm(LogForm)
-            history.push('/')
-        })
-        .catch(err => {
-            console.dir(err)
-        })       
-    }
+    
     return(
         <div className='log-container'> 
             <form onSubmit={handleSubmit}>
