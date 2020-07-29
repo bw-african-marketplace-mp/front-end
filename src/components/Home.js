@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 import {useHistory} from 'react-router-dom'
 import {BASE_URL, PRODUCTS_PATH} from '../utils/URLs'
 
@@ -11,12 +11,13 @@ const Home = () => {
     const [itemsForSale, setItemsForSale] = useState([])
 
     useEffect(() => {
-        axios.get(`${BASE_URL}${PRODUCTS_PATH}`)
-        .then(res => {
-            console.log(res)
-            setItemsForSale(res.data)
-        })
-        .catch(err => console.log(err))
+        axiosWithAuth()
+            .get(`${PRODUCTS_PATH}`)
+            .then(res => {
+                console.log(res)
+                setItemsForSale(res.data.data)
+            })
+            .catch(err => console.log(err))
     }, [])
 
     const addItem = event => {
