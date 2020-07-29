@@ -11,7 +11,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>African Marketplace</h1>
+      <h1 className='title'>African Marketplace</h1>
+      <img className='head-img' src="https://source.unsplash.com/fm9wqDNXyQ0"/>
       <Navigation />
       <Switch>
         
