@@ -30,6 +30,7 @@ function Register (props) {
             })
             .catch(err => {
                 console.log(err)
+                setErrors([...errors, {message:'Username is already taken'}]);
             })
         })
         .catch(err => {

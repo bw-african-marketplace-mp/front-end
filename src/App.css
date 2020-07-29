@@ -13,6 +13,15 @@
   margin: 0% 20%;
 }
 
+.home-title{
+  background-color: #79d70f;
+  margin: 0% 15%;
+}
+
+.change-title{
+  background-color: #79d70f;
+}
+
 .head-img{
   height: 30%;
   width: 60%;
@@ -43,6 +52,15 @@
   font-weight: bold;
 }
 
+.list{
+  text-align: center;
+  margin: 0% 43%;
+}
+
+.item{
+  margin: 5% 0;
+}
+
 .btn{
   background: #f5a31a;
   color: white;
@@ -55,6 +73,23 @@
 }
 
 .btn:hover{
+  background: yellow;
+  color: black;
+  font-weight: bold;
+}
+
+.sale-btn{
+  background: #f5a31a;
+  color: white;
+  border: none;
+  margin: 10px 5px;
+  padding: 5px;
+  border-radius: 10px;
+  height: 50px;
+  width: 80px;
+}
+
+.sale-btn:hover{
   background: yellow;
   color: black;
   font-weight: bold;
