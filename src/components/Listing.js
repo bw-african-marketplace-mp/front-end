@@ -15,6 +15,9 @@ const Listing = props => {
             </div>
             <div className='description'>
             Price: {props.item.product_price}
+            </div>
+            <div className='description'>
+            Country: {props.item.country}
             </div> 
         </div>
     )
