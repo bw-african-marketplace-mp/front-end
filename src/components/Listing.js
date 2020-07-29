@@ -1,7 +1,18 @@
 import React from 'react'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { PRODUCTS_PATH } from '../utils/URLs'
 
 const Listing = props => {
     console.log(props)
+    const deleteItem = event => {
+        axiosWithAuth()
+            .delete(`${PRODUCTS_PATH}${props.item.id}`)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err))
+    }
+
     return(
         <div className='item-card'>
             <div className='description'>
@@ -19,6 +30,8 @@ const Listing = props => {
             <div className='description'>
             Country: {props.item.country}
             </div> 
+            <button>Edit Listing</button>
+             <button onClick={deleteItem}>Delete Listing</button>
         </div>
     )
 }
