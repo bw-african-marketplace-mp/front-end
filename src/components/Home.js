@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
-import {BASE_URL} from '../utils/URLs'
+import {BASE_URL, PRODUCTS_PATH} from '../utils/URLs'
 
 import Listing from './Listing'
 
@@ -11,7 +11,7 @@ const Home = () => {
     const [itemsForSale, setItemsForSale] = useState([])
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/users`)
+        axios.get(`${BASE_URL}${PRODUCTS_PATH}`)
         .then(res => {
             console.log(res)
             setItemsForSale(res.data)

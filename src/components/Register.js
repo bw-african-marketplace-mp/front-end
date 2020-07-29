@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import * as yup from 'yup'
 import registerSchema from "../RegisterSchema"
 import axios from 'axios'
+import {BASE_URL, REGISTER_PATH} from '../utils/URLs'
 
 const initialForm = {
     username: '',
@@ -21,14 +22,13 @@ function Register (props) {
         e.preventDefault();
         registerSchema.validate(form, {abortEarly: false})
         .then(res => {
-            axios.post('http://jsonplaceholder.typicode.com/users', form)
+            axios.post(`${BASE_URL}${REGISTER_PATH}`, form)
             .then(res => {
-                console.log(res);
-                setForm(initialForm)
-                history.push('/')
+                console.log(res.data.data.password);
+                history.push('/login')
             })
             .catch(err => {
-                console.dir(err)
+                console.log(err)
             })
         })
         .catch(err => {
