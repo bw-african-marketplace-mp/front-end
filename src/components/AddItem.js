@@ -38,7 +38,7 @@ const AddItem = props => {
     const onSubmit = event => {
         event.preventDefault()
         axiosWithAuth()
-            .post(`${NEW_ITEM_PATH}/${user.id}`, formValues)
+            .post(`${NEW_ITEM_PATH}${user.id}`, formValues)
             .then(res => {
                 push('/')
             })
