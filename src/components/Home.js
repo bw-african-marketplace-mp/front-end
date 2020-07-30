@@ -17,28 +17,35 @@ const Home = () => {
         axiosWithAuth()
             .get(`${USERS_PATH}`)
             .then(res => {
-                // console.log('res', res)
-                // console.log('user', username)
-                // console.log(typeof username)
                 setUserList(res.data.data)
             })
             .catch(err => {
                 console.log(err)
             })
-    })
+    }, [])
 
     useEffect(() => {
         let usernameSnapshot = user.username
         if (usernameSnapshot === '') {
             usernameSnapshot = localStorage.getItem('username')
         }
-        const currentUser =userList.filter(u => usernameSnapshot === u.username)
-        // console.log(currentUser)
-        const userId = currentUser[0].id
-        setUser({
-            username: usernameSnapshot,
-            id: userId
-        })
+        axiosWithAuth()
+            .get(`${USERS_PATH}`)
+            .then(res => {
+                // console.log('res', res)
+                // console.log('user', username)
+                // console.log(typeof username)
+                const currentUser = res.data.data.filter(u => usernameSnapshot === u.username)
+                // console.log(currentUser)
+                const userId = currentUser[0].id
+                setUser({
+                    username: usernameSnapshot,
+                    id: userId
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }, [])
 
     useEffect(() => {
