@@ -16,7 +16,6 @@ function App() {
     username: '',
     id: ''
   })
-  
 
   return (
     <UserContext.Provider value={{user, setUser}}>

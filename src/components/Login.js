@@ -30,6 +30,7 @@ function Login (props) {
             .then(res => {
                 console.log(res);
                 localStorage.setItem('token', res.data.token)
+                localStorage.setItem('username', form.username)
                 setUser({
                     ...user,
                     username: form.username
