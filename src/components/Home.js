@@ -11,11 +11,23 @@ const Home = () => {
     const {push} = useHistory()
     const [itemsForSale, setItemsForSale] = useState([])
     const {user, setUser} = useContext(UserContext)
+    const [userList, setUserList] = useState([])
 
     useEffect(() => {
-        let username = user.username
-        if (username === '') {
-            username = localStorage.getItem('username')
+        axiosWithAuth()
+            .get(`${USERS_PATH}`)
+            .then(res => {
+                setUserList(res.data.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
+
+    useEffect(() => {
+        let usernameSnapshot = user.username
+        if (usernameSnapshot === '') {
+            usernameSnapshot = localStorage.getItem('username')
         }
         axiosWithAuth()
             .get(`${USERS_PATH}`)
@@ -23,11 +35,11 @@ const Home = () => {
                 // console.log('res', res)
                 // console.log('user', username)
                 // console.log(typeof username)
-                const currentUser = res.data.data.filter(u => username === u.username)
+                const currentUser = res.data.data.filter(u => usernameSnapshot === u.username)
                 // console.log(currentUser)
                 const userId = currentUser[0].id
                 setUser({
-                    ...user,
+                    username: usernameSnapshot,
                     id: userId
                 })
             })
@@ -56,7 +68,7 @@ const Home = () => {
                 <h2 className='home-title'>Items for Sale</h2>
                 {itemsForSale.map(item => {
                     return(
-                        <Listing key={item.id} item={item} />
+                        <Listing key={item.id} item={item} userList={userList} />
                     )
                 })}
                 <div>

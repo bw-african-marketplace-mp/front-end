@@ -1,6 +1,6 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-import {NEW_ITEM_PATH} from '../utils/URLs'
+import { NEW_ITEM_PATH } from '../utils/URLs'
 import { useHistory } from 'react-router-dom'
 import {UserContext} from '../App'
 
@@ -21,7 +21,8 @@ const AddItem = props => {
     const [formValues, setFormValues] = useState(initialFormValues)
 
     useEffect(() => {
-        if (user.username === '') {
+        // console.log(user)
+        if (user.id === '') {
             push('/')
         }
     }, [])
