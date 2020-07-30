@@ -31,6 +31,7 @@ function Login (props) {
                 console.log(res);
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('username', form.username)
+                props.setLoggedIn(true);
                 setUser({
                     ...user,
                     username: form.username
