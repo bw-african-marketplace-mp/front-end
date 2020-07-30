@@ -58,7 +58,11 @@
 }
 
 .item{
-  margin: 5% 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10%;
 }
 
 .item-card {

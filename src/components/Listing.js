@@ -36,7 +36,7 @@ const Listing = props => {
             <div className='description'>
             Market Name: {props.item.market_name}
             </div> 
-            {user.id === props.item.id && <button onClick={modifyItem}>Modify Item</button>}
+            {user.id === props.item.id && <button onClick={modifyItem} className='third-btn'>Modify Item</button>}
         </div>
     )
 }
