@@ -13,22 +13,18 @@ const Home = () => {
     const {user, setUser} = useContext(UserContext)
 
     useEffect(() => {
-        axiosWithAuth()
-            .get(`${PRODUCTS_PATH}`)
-            .then(res => {
-                console.log(res)
-                setItemsForSale(res.data.data)
-            })
-            .catch(err => console.log(err))
-    }, [])
-
-    useEffect(() => {
+        let username = user.username
+        if (username === '') {
+            username = localStorage.getItem('username')
+        }
         axiosWithAuth()
             .get(`${USERS_PATH}`)
             .then(res => {
-                // console.log(res)
-                // console.log(user)
-                const currentUser = res.data.data.filter(u => user.username === u.username)
+                // console.log('res', res)
+                // console.log('user', username)
+                // console.log(typeof username)
+                const currentUser = res.data.data.filter(u => username === u.username)
+                // console.log(currentUser)
                 const userId = currentUser[0].id
                 setUser({
                     ...user,
@@ -38,6 +34,16 @@ const Home = () => {
             .catch(err => {
                 console.log(err)
             })
+    }, [])
+
+    useEffect(() => {
+        axiosWithAuth()
+            .get(`${PRODUCTS_PATH}`)
+            .then(res => {
+                console.log(res)
+                setItemsForSale(res.data.data)
+            })
+            .catch(err => console.log(err))
     }, [])
 
     const addItem = event => {

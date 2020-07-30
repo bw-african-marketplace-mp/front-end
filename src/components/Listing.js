@@ -7,7 +7,7 @@ const Listing = props => {
 
     const {push} = useHistory()
     const {user} = useContext(UserContext)
-    console.log(user)
+    // console.log(user)
 
     const modifyItem = event => {
         push(`/modify-item/${props.item.id}`)
