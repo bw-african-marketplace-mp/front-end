@@ -42,20 +42,17 @@ const Home = () => {
                     username: usernameSnapshot,
                     id: userId
                 })
+                axiosWithAuth()
+                    .get(`${PRODUCTS_PATH}`)
+                    .then(res => {
+                        console.log(res)
+                        setItemsForSale(res.data.data)
+                    })
+                    .catch(err => console.log(err))
             })
             .catch(err => {
                 console.log(err)
             })
-    }, [])
-
-    useEffect(() => {
-        axiosWithAuth()
-            .get(`${PRODUCTS_PATH}`)
-            .then(res => {
-                console.log(res)
-                setItemsForSale(res.data.data)
-            })
-            .catch(err => console.log(err))
     }, [])
 
     const addItem = event => {
