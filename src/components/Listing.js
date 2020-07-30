@@ -1,16 +1,16 @@
-import React from 'react'
-import { axiosWithAuth } from '../utils/axiosWithAuth'
-import { PRODUCTS_PATH } from '../utils/URLs'
+import React, { useContext } from 'react'
+import { UserContext } from '../App'
+import { useHistory } from 'react-router-dom'
 
 const Listing = props => {
     console.log(props)
-    const deleteItem = event => {
-        axiosWithAuth()
-            .delete(`${PRODUCTS_PATH}${props.item.id}`)
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => console.log(err))
+
+    const {push} = useHistory()
+    const {user} = useContext(UserContext)
+    console.log(user)
+
+    const modifyItem = event => {
+        push(`/modify-item/${props.item.id}`)
     }
 
     return(
@@ -33,11 +33,10 @@ const Listing = props => {
             <div className='description'>
             Country: {props.item.country}
             </div> 
-           <div className='description'>
+            <div className='description'>
             Market Name: {props.item.market_name}
             </div> 
-            <button className='third-btn'>Edit Listing</button>
-            <button className='third-btn' onClick={deleteItem}>Delete Listing</button> 
+            {user.id === props.item.id && <button onClick={modifyItem}>Modify Item</button>}
         </div>
     )
 }

@@ -5,6 +5,7 @@ import Navigation from './components/Navigation'
 import Login from './components/Login'
 import Register from './components/Register'
 import AddItem from './components/AddItem'
+import ModifyItem from './components/ModifyItem'
 import PrivateRoute from './components/PrivateRoute'
 import './App.css';
 
@@ -33,8 +34,12 @@ function App() {
             <Register />
           </Route>
 
-          <PrivateRoute exact path='/add-item' >
+          <PrivateRoute path='/add-item' >
             <AddItem />
+          </PrivateRoute>
+
+          <PrivateRoute path='/modify-item/:itemId' >
+            <ModifyItem />
           </PrivateRoute>
 
           <PrivateRoute exact path='/'>

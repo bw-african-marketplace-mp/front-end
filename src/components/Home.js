@@ -28,7 +28,8 @@ const Home = () => {
             .then(res => {
                 // console.log(res)
                 // console.log(user)
-                const userId = res.data.data.filter(u => user.username === u.username)
+                const currentUser = res.data.data.filter(u => user.username === u.username)
+                const userId = currentUser[0].id
                 setUser({
                     ...user,
                     id: userId

@@ -1,10 +1,10 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useEffect} from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-import {NEW_ITEM_PATH} from '../utils/URLs'
-import { useHistory } from 'react-router-dom'
-import {UserContext} from '../App'
+import { PRODUCTS_PATH } from '../utils/URLs'
+import { useHistory, useParams } from 'react-router-dom'
 
-const AddItem = props => {
+const ModifyItem = props => {
+
     const initialFormValues = {
         product_name: "", 
         product_category: "", 
@@ -16,22 +16,42 @@ const AddItem = props => {
     }
 
     const {push} = useHistory()
-    const {user} = useContext(UserContext)
+    let {itemId} = useParams()
+    // console.log(itemId)
 
     const [formValues, setFormValues] = useState(initialFormValues)
 
+    useEffect(() => {
+        axiosWithAuth()
+            .get(`${PRODUCTS_PATH}/${itemId}`)
+            .then(res => {
+                // console.log(res)
+                setFormValues(res.data.data)
+            })
+    }, [itemId])
+
     const onChange = event => {
-        console.log(event.target)
+        // console.log(event.target)
         setFormValues({
             ...formValues,
             [event.target.name]: event.target.value
         })
     }
 
-    const onSubmit = event => {
+    const editListing = event => {
         event.preventDefault()
         axiosWithAuth()
-            .post(`${NEW_ITEM_PATH}/${user.id}`, formValues)
+            .put(`${PRODUCTS_PATH}/${itemId}`, formValues)
+            .then(res => {
+                push('/')
+            })
+            .catch(err => console.log(err))
+    }
+
+    const deleteListing = event => {
+        event.preventDefault()
+        axiosWithAuth()
+            .delete(`${PRODUCTS_PATH}/${itemId}`)
             .then(res => {
                 push('/')
             })
@@ -42,7 +62,7 @@ const AddItem = props => {
         <>
             <h2 className='change-title'>Create a New Listing</h2>
             <div className='list'>
-                <form onSubmit={onSubmit}>
+                <form>
                     <label className='item'>Product Name:
                         <input 
                             type='text'
@@ -99,11 +119,12 @@ const AddItem = props => {
                             onChange={onChange}
                         />
                     </label>
-                    <button className='sale-btn'>Create Sale Listing</button>
+                    <button onClick={editListing} className='sale-btn'>Edit Listing</button>
+                    <button onClick={deleteListing} className='sale-btn'>Delete Listing</button>
                 </form>
             </div>
         </>
     )
 }
 
-export default AddItem
+export default ModifyItem
