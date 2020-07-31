@@ -13,7 +13,7 @@ const Listing = props => {
     });
     console.log(seller);
     
-    const modifyItem = event => {
+    const modifyItem = () => {
         push(`/modify-item/${props.item.id}`)
     }
 

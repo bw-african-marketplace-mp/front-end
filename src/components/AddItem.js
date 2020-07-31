@@ -4,7 +4,7 @@ import { NEW_ITEM_PATH } from '../utils/URLs'
 import { useHistory } from 'react-router-dom'
 import {UserContext} from '../App'
 
-const AddItem = props => {
+const AddItem = () => {
     const initialFormValues = {
         product_name: "", 
         product_category: "", 

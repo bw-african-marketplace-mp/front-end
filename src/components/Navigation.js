@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import '../App.css';
 
@@ -11,8 +11,14 @@ function Navigation (props) {
     return (
         <>
         {props.loggedIn 
-        ? (<div className='nav'><NavLink to='/' className='link'>Home</NavLink> <NavLink to='/login' className='link' onClick={logout}>Log Out</NavLink></div>)
-        : (<div className='nav'> <NavLink to='/register' className='link'>Register</NavLink> <NavLink to='/login' className='link'>Log In</NavLink></div>)
+        ? (<div className='nav'>
+                <NavLink to='/' className='link'>Home</NavLink> 
+                <NavLink to='/login' className='link' onClick={logout}>Log Out</NavLink>
+            </div>)
+        : (<div className='nav'> 
+                <NavLink to='/register' className='link'>Register</NavLink> 
+                <NavLink to='/login' className='link'>Log In</NavLink>
+            </div>)
         }
         </>
     )

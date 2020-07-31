@@ -14,17 +14,16 @@ const Home = () => {
     const [userList, setUserList] = useState([])
 
     useEffect(() => {
+        // get list of all users - single API call providing data to all children
         axiosWithAuth()
-            .get(`${USERS_PATH}`)
-            .then(res => {
-                setUserList(res.data.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }, [])
-
-    useEffect(() => {
+        .get(`${USERS_PATH}`)
+        .then(res => {
+            setUserList(res.data.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        //set user context - uses username from localStorage if the page was reloaded
         let usernameSnapshot = user.username
         if (usernameSnapshot === '') {
             usernameSnapshot = localStorage.getItem('username')
@@ -32,16 +31,15 @@ const Home = () => {
         axiosWithAuth()
             .get(`${USERS_PATH}`)
             .then(res => {
-                // console.log('res', res)
-                // console.log('user', username)
-                // console.log(typeof username)
                 const currentUser = res.data.data.filter(u => usernameSnapshot === u.username)
-                // console.log(currentUser)
                 const userId = currentUser[0].id
                 setUser({
                     username: usernameSnapshot,
                     id: userId
                 })
+                // set list of items for sale
+                // triggers children to mount
+                // children require user context to mount correctly
                 axiosWithAuth()
                     .get(`${PRODUCTS_PATH}`)
                     .then(res => {
@@ -55,7 +53,7 @@ const Home = () => {
             })
     }, [])
 
-    const addItem = event => {
+    const addItem = () => {
         push('/add-item')
     }
 

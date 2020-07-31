@@ -12,13 +12,15 @@ const initialForm = {
     password: ''
   }
 
-function Register (props) {
+function Register () {
     const [form, setForm] = useState(initialForm)
     const [errors, setErrors] = useState([]); 
     const history = useHistory()
+
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value});
     }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         registerSchema.validate(form, {abortEarly: false})
@@ -38,6 +40,7 @@ function Register (props) {
             setErrors([...err.inner])
         })
     }
+    
     return(
         <div className='reg-container'>
             <form onSubmit={handleSubmit}>
