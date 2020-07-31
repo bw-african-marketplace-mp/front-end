@@ -3,7 +3,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { PRODUCTS_PATH } from '../utils/URLs'
 import { useHistory, useParams } from 'react-router-dom'
 
-const ModifyItem = props => {
+const ModifyItem = () => {
 
     const initialFormValues = {
         product_name: "", 

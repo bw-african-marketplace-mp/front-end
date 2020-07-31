@@ -19,16 +19,19 @@ function Login (props) {
     const [errors, setErrors] = useState([]); 
     const history = useHistory()
     const {user, setUser} = useContext(UserContext)
+    
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value});
     }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         loginSchema.validate(form, {abortEarly: false})
         .then(res => {
+            // console.log(res)
             axios.post(`${BASE_URL}${LOGIN_PATH}`, form)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('username', form.username)
                 props.setLoggedIn(true);
@@ -43,7 +46,6 @@ function Login (props) {
                 console.dir(err)
                 setErrors([...errors, {message:'Invalid Login'}]);
             })
-            console.log(res);
         })
         .catch(err => {
             console.log(err);

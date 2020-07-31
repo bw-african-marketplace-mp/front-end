@@ -43,7 +43,7 @@ return (
             <ModifyItem />
           </PrivateRoute>
 
-          <PrivateRoute exact path='/'>
+          <PrivateRoute path='/'>
             <Home />
           </PrivateRoute>
         </Switch>
